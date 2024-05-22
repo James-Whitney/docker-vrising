@@ -12,6 +12,10 @@ RUN apt update -y && \
     dpkg --add-architecture i386 && \
     apt update -y && \
     apt-get upgrade -y 
+RUN apt update && apt install -y openssl \
+                   ca-certificates \
+                   iproute2 \
+                   libldap-2.5-0
 RUN useradd -m steam && cd /home/steam && \
     echo steam steam/question select "I AGREE" | debconf-set-selections && \
     echo steam steam/license note '' | debconf-set-selections && \
